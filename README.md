@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/RedHatInsights/insights-frontend-starter-app.svg?branch=master)](https://travis-ci.org/RedHatInsights/insights-frontend-starter-app)
+[![Build Status](https://travis-ci.org/RedHatInsights/insights-frontend-starter-app.svg?branch=master)](https://travis-ci.org/RedHatInsights/insights-frontend-starter-app) [![Greenkeeper badge](https://badges.greenkeeper.io/carlosthe19916/windup-ui.svg)](https://greenkeeper.io/)
 
 # insights-frontend-starter-app
 
