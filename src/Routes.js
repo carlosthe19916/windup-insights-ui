@@ -18,11 +18,13 @@ import some from 'lodash/some';
  *         see the difference with DashboardMap and InventoryDeployments.
  *
  */
-const ProjectsPage = asyncComponent(() => import(/* webpackChunkName: "Rules" */ './SmartComponents/ProjectListPage'));
+const ProjectListPage = asyncComponent(() => import(/* webpackChunkName: "ProjectListPage" */ './SmartComponents/ProjectListPage'));
+const CreateProjectPage = asyncComponent(() => import(/* webpackChunkName: "CreateProjectPage" */ './SmartComponents/CreateProjectPage'));
 const SamplePage = asyncComponent(() => import(/* webpackChunkName: "SamplePage" */ './SmartComponents/SamplePage/SamplePage'));
 const Rules = asyncComponent(() => import(/* webpackChunkName: "Rules" */ './PresentationalComponents/Rules/ListRules'));
 const paths = {
-    projects: '/projects',
+    projectList: '/projects',
+    createProject: '/create-project',
     samplepage: '/samplepage',
     rules: '/rules'
 };
@@ -58,13 +60,14 @@ export const Routes = (props: Props) => {
 
     return (
         <Switch>
-            <InsightsRoute path={ paths.projects } component={ ProjectsPage } rootClass='projects'/>
+            <InsightsRoute path={ paths.projectList } component={ ProjectListPage } rootClass='project-list'/>
+            <InsightsRoute path={ paths.createProject } component={ CreateProjectPage } rootClass='create-project'/>
             <InsightsRoute path={ paths.samplepage } component={ SamplePage } rootClass='samplepage'/>
             <InsightsRoute path={ paths.rules } component={ Rules } rootClass='rules'/>
             <InsightsRoute path={ paths.rules } component={ Rules } rootClass='projects'/>
 
             { /* Finally, catch all unmatched routes */ }
-            <Route render={ () => some(paths, p => p === path) ? null : (<Redirect to={ paths.projects }/>) }/>
+            <Route render={ () => some(paths, p => p === path) ? null : (<Redirect to={ paths.projectList }/>) }/>
         </Switch>
     );
 };

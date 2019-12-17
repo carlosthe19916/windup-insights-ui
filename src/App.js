@@ -4,6 +4,13 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Routes } from './Routes';
 import './App.scss';
+import '@redhat-cloud-services/frontend-components-notifications/index.css';
+import { NotificationsPortal } from '@redhat-cloud-services/frontend-components-notifications';
+import asyncComponent from './Utilities/asyncComponent';
+
+const DeleteMessageDialog = asyncComponent(() =>
+  import(/* webpackChunkName: "DeleteDialog" */ './SmartComponents/DeleteDialog')
+);
 
 class App extends Component {
 
@@ -25,7 +32,11 @@ class App extends Component {
 
     render () {
         return (
-            <Routes childProps={ this.props } />
+            <React.Fragment>
+                <Routes childProps={ this.props } />
+                <NotificationsPortal />
+                <DeleteMessageDialog />
+            </React.Fragment>
         );
     }
 }

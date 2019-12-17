@@ -8,6 +8,7 @@
     "@patternfly/react-core": "^3.112.3",
     "@patternfly/react-table": "^2.22.19",
     "@redhat-cloud-services/frontend-components": "0.0.20",
+    "@redhat-cloud-services/frontend-components-notifications": "0.0.7",
     "@redhat-cloud-services/frontend-components-utilities": "0.0.9",
     "classnames": "^2.2.5",
     "react": "^16.10.1",
@@ -16,7 +17,9 @@
     "react-router-dom": "^5.1.2",
     "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
-    "redux-promise-middleware": "^6.1.1"
+    "redux-promise-middleware": "^6.1.1",
+    "redux-thunk": "^2.3.0",
+    "typesafe-actions": "^4.4.2"
   },
   "jest": {
     "coverageDirectory": "./coverage/",
@@ -49,6 +52,7 @@
     "@types/node": "^12.7.8",
     "@types/react": "^16.9.4",
     "@types/react-dom": "^16.9.1",
+    "@types/react-redux": "^7.1.4",
     "@types/react-router-dom": "^5.1.0",
     "@types/webpack": "^4.39.2",
     "babel-core": "^6.26.3",
