@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Routes } from './Routes';
 import './App.scss';
+import '@patternfly/patternfly/patternfly-addons.css';
 import '@redhat-cloud-services/frontend-components-notifications/index.css';
 import { NotificationsPortal } from '@redhat-cloud-services/frontend-components-notifications';
 import asyncComponent from './Utilities/asyncComponent';

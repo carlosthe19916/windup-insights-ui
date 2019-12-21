@@ -1,13 +1,29 @@
 import React, { Component } from 'react';
 import { AxiosError } from 'axios';
-import { Bullseye, Button } from '@patternfly/react-core';
+import {
+  Bullseye,
+  Button,
+  Toolbar,
+  ToolbarGroup,
+  ToolbarItem,
+  TextInput,
+  Dropdown,
+  DropdownPosition,
+  DropdownToggle,
+  DropdownItem,
+  Text,
+  TextVariants
+} from '@patternfly/react-core';
 import { Table, TableHeader, TableBody, ICell, IRow, IActions } from '@patternfly/react-table';
 import { Main, PageHeader, PageHeaderTitle } from '@redhat-cloud-services/frontend-components';
+import { ListUlIcon, SortAlphaDownIcon, TableIcon } from '@patternfly/react-icons';
+import { Divider } from '@patternfly/react-core/dist/esm/experimental';
 import Welcome from '../../PresentationalComponents/Welcome';
 import { ExtendedMigrationProject } from '../../models/windup';
 import { migrationProjectListActions } from '../../store/migrationProjectList';
 import { FetchStatus } from '../../store/common';
 import { deleteDialogActions } from '../../store/deleteDialog';
+import { Link } from 'react-router-dom';
 
 interface StateToProps {
   projects: ExtendedMigrationProject[];
@@ -38,7 +54,10 @@ class ProjectListPage extends Component<Props, State> {
         { title: 'Name' },
         { title: 'Description' },
         {
-          title: ''
+          title: '',
+          props: {
+            className: 'pf-u-text-align-right'
+          }
         }
       ],
       rows: [],
@@ -82,7 +101,11 @@ class ProjectListPage extends Component<Props, State> {
               title: project.title
             },
             {
-              title: project.description
+              title: project.description ? (
+                project.description
+              ) : (
+                <Text component={TextVariants.small}>No description</Text>
+              )
             },
             {
               title: (
@@ -137,6 +160,27 @@ class ProjectListPage extends Component<Props, State> {
     );
   };
 
+  buildSearchBox = () => {
+    return <TextInput type="search" aria-label="search text input" />;
+  };
+
+  buildDropdown = () => {
+    return (
+      <Dropdown
+        position={DropdownPosition.right}
+        toggle={<DropdownToggle>All</DropdownToggle>}
+        dropdownItems={[
+          <DropdownItem key="item-1">Item 1</DropdownItem>,
+          <DropdownItem key="item-2">Item 2</DropdownItem>,
+          <DropdownItem key="item-3">Item 3</DropdownItem>,
+          <DropdownItem isDisabled key="all">
+            All
+          </DropdownItem>
+        ]}
+      />
+    );
+  };
+
   renderProjectList = () => {
     const { columns, rows, actions } = this.state;
 
@@ -146,6 +190,39 @@ class ProjectListPage extends Component<Props, State> {
           <PageHeaderTitle title={'Projects'} />
         </PageHeader>
         <Main>
+          <div className="ins-c-table__toolbar">
+            <Toolbar className="pf-l-toolbar pf-u-justify-content-space-between pf-u-mx-xl pf-u-my-md">
+              <ToolbarGroup>
+                <ToolbarItem className="pf-u-mr-xl">{this.buildSearchBox()}</ToolbarItem>
+                <ToolbarItem className="pf-u-mr-md">{this.buildDropdown()}</ToolbarItem>
+                <ToolbarItem>
+                  <Button variant="plain" aria-label="Sort A-Z">
+                    <SortAlphaDownIcon />
+                  </Button>
+                </ToolbarItem>
+              </ToolbarGroup>
+              <ToolbarGroup>
+                <ToolbarItem>
+                  <Button variant="plain" aria-label="Insert Table">
+                    <TableIcon />
+                  </Button>
+                </ToolbarItem>
+                <ToolbarItem className="pf-u-mx-md">
+                  <Button variant="plain" aria-label="Insert Bulleted List">
+                    <ListUlIcon />
+                  </Button>
+                </ToolbarItem>
+                <ToolbarItem className="pf-u-mx-md">
+                  <Link to="/create-project">
+                    <Button aria-label="Action 2">New Project</Button>
+                  </Link>
+                </ToolbarItem>
+              </ToolbarGroup>
+            </Toolbar>
+          </div>
+
+          <Divider component="div" />
+
           <Table aria-label="Simple Table" cells={columns} rows={rows} actions={actions}>
             <TableHeader />
             <TableBody />

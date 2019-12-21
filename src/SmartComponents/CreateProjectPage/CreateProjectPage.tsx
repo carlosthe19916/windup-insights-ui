@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Wizard } from '@patternfly/react-core';
+import CreateProject from './CreateProject/CreateProject';
 
 class CreateProjectPage extends Component {
   render() {
     const steps = [
       {
         name: 'Create Project',
-        component: <p>Create Project</p>
+        component: <CreateProject />
       },
       {
         name: 'Add Applications',
@@ -22,7 +23,15 @@ class CreateProjectPage extends Component {
 
     return (
       <div style={{ height: '400px' }}>
-        <Wizard isInPage onClose={() => console.log('closed')} steps={steps} />
+        <Wizard
+          isOpen={true}
+          isFullHeight
+          isFullWidth
+          onClose={() => console.log('closed')}
+          steps={steps}
+          title="Create project"
+          description="Follow the steps to create a project"
+        />
       </div>
     );
   }
