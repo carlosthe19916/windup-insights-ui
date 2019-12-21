@@ -18,12 +18,12 @@ import some from 'lodash/some';
  *         see the difference with DashboardMap and InventoryDeployments.
  *
  */
-const ProjectListPage = asyncComponent(() => import(/* webpackChunkName: "ProjectListPage" */ './SmartComponents/ProjectListPage'));
-const CreateProjectPage = asyncComponent(() => import(/* webpackChunkName: "CreateProjectPage" */ './SmartComponents/CreateProjectPage'));
+const ProjectListPage = asyncComponent(() => import(/* webpackChunkName: "ProjectListPage" */ './pages/ProjectListPage'));
+const CreateProjectPage = asyncComponent(() => import(/* webpackChunkName: "CreateProjectPage" */ './pages/CreateProjectPage'));
 const SamplePage = asyncComponent(() => import(/* webpackChunkName: "SamplePage" */ './SmartComponents/SamplePage/SamplePage'));
 const Rules = asyncComponent(() => import(/* webpackChunkName: "Rules" */ './PresentationalComponents/Rules/ListRules'));
 const paths = {
-    projectList: '/projects',
+    projectList: '/project-list',
     createProject: '/create-project',
     samplepage: '/samplepage',
     rules: '/rules'
