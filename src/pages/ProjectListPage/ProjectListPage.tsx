@@ -32,8 +32,7 @@ interface StateToProps {
 }
 
 interface DispatchToProps {
-  // fetchMigrationProjects(): typeof migrationProjectListActions.fetchMigrationProjects;
-  fetchMigrationProjects(): Promise<void>;
+  fetchMigrationProjects: typeof migrationProjectListActions.fetchMigrationProjects;
   showDeleteDialog: typeof deleteDialogActions.openModal;
   closeDeleteDialog: typeof deleteDialogActions.closeModal;
 }
@@ -213,7 +212,7 @@ class ProjectListPage extends Component<Props, State> {
                   </Button>
                 </ToolbarItem>
                 <ToolbarItem className="pf-u-mx-md">
-                  <Link to="/create-project">
+                  <Link to="/wizard/create-project">
                     <Button aria-label="Action 2">New Project</Button>
                   </Link>
                 </ToolbarItem>

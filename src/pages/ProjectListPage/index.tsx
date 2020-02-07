@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import ProjectListPage from './ProjectListPage';
 
 import { migrationProjectListActions, migrationProjectListSelectors } from '../../store/migrationProjectList';
-import { createMapStateToProps } from '../../store/common';
+import { createMapStateToProps, createMapDispatchToProps } from '../../store/common';
 import { deleteDialogActions } from '../../store/deleteDialog';
 
 const mapStateToProps = createMapStateToProps(state => ({
@@ -11,6 +11,11 @@ const mapStateToProps = createMapStateToProps(state => ({
   status: migrationProjectListSelectors.status(state)
 }));
 
+// const mapDispatchToProps = createMapDispatchToProps(() =>({
+//   fetchMigrationProjects: migrationProjectListActions.fetchMigrationProjects,
+//   showDeleteDialog: deleteDialogActions.openModal,
+//   closeDeleteDialog: deleteDialogActions.closeModal
+// }));
 const mapDispatchToProps = {
   fetchMigrationProjects: migrationProjectListActions.fetchMigrationProjects,
   showDeleteDialog: deleteDialogActions.openModal,
